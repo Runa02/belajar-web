@@ -67,8 +67,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
-                        <a class="collapse-item" href="./mastersiswa">Master Siswa</a>
-                        <a class="collapse-item" href="./masterproject">Master Project</a>
+                        <a class="collapse-item" href="{{ route('indexsiswa') }}">Master Siswa</a>
+                        <a class="collapse-item" href="{{ route('project.index') }}">Master Project</a>
                         <a class="collapse-item" href="./masterkontak">Master Kontak</a>
                     </div>
                 </div>
@@ -312,7 +312,7 @@
                     
                     <h1>@yield('master-kontak')</h1>
 
-                    {{-- @yield('content') --}}
+                    @yield('content')
                     
                     
                 </div>

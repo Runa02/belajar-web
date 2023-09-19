@@ -27,4 +27,14 @@ class siswa extends Model
     {
         return $this->hasMany(Contact::class);
     }
+
+    public static function booted() {
+        parent::boot();
+
+        self::deleted(function ($model) {
+            if (file_exists(storage_path('app/public/' . str_replace('storage/', '', $model->photo)))) {
+                unlink(storage_path('app/public/' . str_replace('storage/', '', $model->photo)));
+            }
+        });
+    }
 }

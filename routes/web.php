@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MasterProjectController;
 use App\Http\Controllers\MasterSiswaController;
 use App\Http\Controllers\MasterKontakController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,4 +42,8 @@ Route::get('/mastersiswa', [MasterSiswaController::class, 'index'])->name('index
 Route::get('/tambah', [MasterSiswaController::class, 'tambah'])->name('tambah');
 Route::post('/tambahsiswa', [MasterSiswaController::class, 'store'])->name('storesiswa');
 Route::get('/mastersiswa/{id}/edit', [MasterSiswaController::class, 'edit_siswa'])->name('siswa.edit');
-Route::get('/siswa/update/{id}', [MasterSiswaController::class, 'edit'])->name('updatesiswa');
+Route::post('/siswa/update/{id}', [MasterSiswaController::class, 'update'])->name('updatesiswa');
+Route::get('/siswa/update/{id}/delete', [MasterSiswaController::class, 'destroy'])->name('siswadestroy');
+
+// Project
+Route::resource('/admin/project', ProjectController::class);

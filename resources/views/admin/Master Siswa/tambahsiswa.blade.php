@@ -4,8 +4,18 @@
 
 <div class="card">
     <div class="card-body card shadow">
-        <form action="{{ route('storesiswa') }}" method="post">
+        <form action="{{ route('storesiswa') }}" method="post" enctype="multipart/form-data">
             @csrf
+
+            @if (count($errors)>0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         
             <div class="row">
                 <div class="col-md-6">
@@ -22,7 +32,7 @@
                     </div>
                 <div class="card-body">
                     <div class="button">
-                        <button type="submit" class="btn btn-success" name="submit">Simpan</button>
+                        <button type="submit" class="btn btn-success">Simpan</button>
                         <a href="./mastersiswa" class="btn btn-light" role="button" aria-pressed="true">Cancel</a>
                     </div>
                 </div>
