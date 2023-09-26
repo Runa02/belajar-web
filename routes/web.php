@@ -32,8 +32,8 @@ Route::get('/projects', [ProjectsController::class, 'projects'])->name('projects
 Route::get('/contact', [ContactController::class, 'contact'])->name('contact');
 
 //admin
-Route::get('/admin', [AdminController::class, 'index']);
-Route::get('/dashboard', [AdminController::class, 'dashboard']);
+// Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 Route::get('/masterproject', [MasterProjectController::class, 'index']);
 Route::get('/masterkontak', [MasterKontakController::class, 'index']);
 
@@ -47,3 +47,7 @@ Route::get('/siswa/update/{id}/delete', [MasterSiswaController::class, 'destroy'
 
 // Project
 Route::resource('/admin/project', ProjectController::class);
+Route::post('/admin/project/store', [ProjectController::class, 'store'])->name('project-store');
+Route::post('/admin/project/{id}/update', [ProjectController::class, 'update'])->name('project-update');
+Route::get('/admin/project/{id}/create', [ProjectController::class, 'add'])->name('project.add');
+Route::delete('/admin/project/{id}/delete', [ProjectController::class, 'delete'])->name('project-delete');

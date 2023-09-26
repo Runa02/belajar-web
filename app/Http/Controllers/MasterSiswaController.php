@@ -35,11 +35,6 @@ class MasterSiswaController extends Controller
             'photo' => 'required|mimes:jpg,jpeg,png',
         ]);
 
-        // $image = $request->file('photo')->getClientOriginalName(); 
-        // if($request->hasFile('photo')){
-        //     $request->file('photo')->move('photo/',$image);
-        // }
-
         $image = $request->file('photo')->store('photo', 'public');
 
         siswa::create([
