@@ -3,6 +3,12 @@
 @section('content-title', 'Master Project')
 @section('content')
 
+@if(Session::has('message'))
+  <div class="alert alert-success"">
+    {{ Session::get('message') }}
+  </div>
+@endif
+
     <div class="row">
         <div class="col-lg-5">
             <div class="card">

@@ -13,6 +13,17 @@
                     <div class="card-body">
                         <form action="{{ route('project-store', $siswa->id) }}" enctype="multipart/form-data" method="POST">
                         @csrf
+
+                        @if (count($errors)>0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $item)
+                                        <li>{{ $item }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                             <input type="hidden" name="siswa_id" value="{{ $siswa->id }}">
                             <div class="form-group">
                                 <label for="project_name">Project Name</label>

@@ -8,7 +8,7 @@
             </div>
             <div class="card-body">
                 <h6>Foto Projek</h6>
-                <img src="" alt="">{{ $item->photo }}
+                <img src="{{ asset('storage/' . $item->photo) }}" alt="{{ $item->photo }}" class="img-thumbnail" width="200" height="200">
                 <h6>Tanggal Project</h6>
                 <p>{{$item->project_date}}</p>
             </div>
