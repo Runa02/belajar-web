@@ -37,7 +37,7 @@ Route::post('/auth', [LoginController::class, 'authenticate'])->name('login.auth
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::middleware(['auth', 'auth.session'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     //admin
     // Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -58,4 +58,21 @@ Route::middleware(['auth', 'auth.session'])->group(function () {
     Route::post('/admin/project/{id}/update', [ProjectController::class, 'update'])->name('project-update');
     Route::get('/admin/project/{id}/create', [ProjectController::class, 'add'])->name('project.add');
     Route::delete('/admin/project/{id}/delete', [ProjectController::class, 'delete'])->name('project-delete');
+});
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/masterproject', [MasterProjectController::class, 'index']);
+    Route::get('/masterkontak', [MasterKontakController::class, 'index']);
+
+    Route::get('/mastersiswa', [MasterSiswaController::class, 'index'])->name('indexsiswa');
+    // Route::get('/tambah', [MasterSiswaController::class, 'tambah'])->name('tambah');
+    // Route::post('/tambahsiswa', [MasterSiswaController::class, 'store'])->name('storesiswa');
+    // Route::get('/mastersiswa/{id}/edit', [MasterSiswaController::class, 'edit_siswa'])->name('siswa.edit');
+    // Route::post('/siswa/update/{id}', [MasterSiswaController::class, 'update'])->name('updatesiswa');
+
+    Route::resource('/admin/project', ProjectController::class);
+    // Route::post('/admin/project/store', [ProjectController::class, 'store'])->name('project-store');
+    // Route::post('/admin/project/{id}/update', [ProjectController::class, 'update'])->name('project-update');
+    // Route::get('/admin/project/{id}/create', [ProjectController::class, 'add'])->name('project.add');
 });
